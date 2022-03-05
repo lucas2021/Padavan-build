@@ -95,11 +95,6 @@ jobs:
         #格式如下：
         #sed -i '/自定义项/d' .config
         #echo "自定义项=y" >> .config
-                  # 更新v2ray版本
-          v2_version=`curl --silent "https://api.github.com/repos/v2fly/v2ray-core/releases/latest" | jq -r '.tag_name | sub("^v";"")'`
-          sed -i "s/V2ray_VERSION := .*/V2ray_VERSION := $v2_version/g" /opt/rt-n56u/trunk/user/v2ray/Makefile
-          sed -i 's|codeload.github.com/v2ray|codeload.github.com/v2fly|g' /opt/rt-n56u/trunk/user/v2ray/Makefile
-        fi
         #########################################################################################
         sudo ./clear_tree
         sudo ./build_firmware_modify $TNAME 0
